@@ -198,13 +198,13 @@ export default function AddressesPage() {
   }))
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">My Addresses</h1>
-            <p className="text-gray-600">Manage your pickup and delivery addresses</p>
+            <h1 className="text-2xl font-bold text-slate-900">My Addresses</h1>
+            <p className="text-slate-600">Manage your pickup and delivery addresses</p>
           </div>
           <Button onClick={() => { setEditingAddress(null); reset(); setShowForm(true); }}>
             <Plus className="h-4 w-4 mr-2" />
@@ -274,10 +274,10 @@ export default function AddressesPage() {
                   <input
                     type="checkbox"
                     id="isPrimary"
-                    className="rounded border-gray-300"
+                    className="rounded border-slate-300"
                     {...register('isPrimary')}
                   />
-                  <label htmlFor="isPrimary" className="text-sm text-gray-600">
+                  <label htmlFor="isPrimary" className="text-sm text-slate-600">
                     Set as primary address
                   </label>
                 </div>
@@ -304,32 +304,32 @@ export default function AddressesPage() {
           {isLoading ? (
             <Card>
               <CardContent className="py-12 text-center">
-                <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full mx-auto" />
+                <div className="animate-spin h-8 w-8 border-2 border-sky-500 border-t-transparent rounded-full mx-auto" />
               </CardContent>
             </Card>
           ) : addresses.length > 0 ? (
             addresses.map((address) => (
-              <Card key={address.id} className={address.is_primary ? 'border-blue-500' : ''}>
+              <Card key={address.id} className={address.is_primary ? 'border-sky-500' : ''}>
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 flex-shrink-0">
-                        <MapPin className="h-5 w-5 text-blue-600" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-50 flex-shrink-0">
+                        <MapPin className="h-5 w-5 text-sky-500" />
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <h3 className="font-semibold text-gray-900">{address.label}</h3>
+                          <h3 className="font-semibold text-slate-900">{address.label}</h3>
                           {address.is_primary && (
                             <Badge variant="default" className="text-xs">Primary</Badge>
                           )}
                         </div>
-                        <p className="text-gray-600 mt-1">{address.address_line1}</p>
+                        <p className="text-slate-600 mt-1">{address.address_line1}</p>
                         {address.address_line2 && (
-                          <p className="text-gray-600">{address.address_line2}</p>
+                          <p className="text-slate-600">{address.address_line2}</p>
                         )}
-                        <p className="text-gray-600">{address.area}, {address.city}</p>
+                        <p className="text-slate-600">{address.area}, {address.city}</p>
                         {address.delivery_instructions && (
-                          <p className="text-sm text-gray-500 mt-2 italic">
+                          <p className="text-sm text-slate-500 mt-2 italic">
                             Note: {address.delivery_instructions}
                           </p>
                         )}
@@ -339,7 +339,7 @@ export default function AddressesPage() {
                       {!address.is_primary && (
                         <button
                           onClick={() => handleSetPrimary(address.id)}
-                          className="p-2 text-gray-400 hover:text-yellow-500 transition-colors"
+                          className="p-2 text-slate-400 hover:text-yellow-500 transition-colors"
                           title="Set as primary"
                         >
                           <Star className="h-4 w-4" />
@@ -347,14 +347,14 @@ export default function AddressesPage() {
                       )}
                       <button
                         onClick={() => handleEdit(address)}
-                        className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
+                        className="p-2 text-slate-400 hover:text-sky-500 transition-colors"
                         title="Edit"
                       >
                         <Edit className="h-4 w-4" />
                       </button>
                       <button
                         onClick={() => handleDelete(address.id)}
-                        className="p-2 text-gray-400 hover:text-red-600 transition-colors"
+                        className="p-2 text-slate-400 hover:text-red-600 transition-colors"
                         title="Delete"
                       >
                         <Trash2 className="h-4 w-4" />
@@ -367,9 +367,9 @@ export default function AddressesPage() {
           ) : (
             <Card>
               <CardContent className="py-12 text-center">
-                <MapPin className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900">No addresses yet</h3>
-                <p className="text-gray-600 mt-1">Add your first address to get started</p>
+                <MapPin className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-slate-900">No addresses yet</h3>
+                <p className="text-slate-600 mt-1">Add your first address to get started</p>
                 <Button className="mt-4" onClick={() => setShowForm(true)}>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Address

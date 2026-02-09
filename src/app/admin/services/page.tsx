@@ -188,13 +188,13 @@ export default function AdminServicesPage() {
   }, {} as Record<string, Service[]>)
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Manage Services</h1>
-            <p className="text-gray-600">Add, edit, or remove laundry services</p>
+            <h1 className="text-2xl font-bold text-slate-900">Manage Services</h1>
+            <p className="text-slate-600">Add, edit, or remove laundry services</p>
           </div>
           <div className="flex gap-3">
             <Link href="/admin">
@@ -214,9 +214,9 @@ export default function AdminServicesPage() {
               <CardTitle>{editingService ? 'Edit Service' : 'Add New Service'}</CardTitle>
               <button 
                 onClick={() => { setShowForm(false); setEditingService(null); reset(); }}
-                className="p-1 hover:bg-gray-100 rounded"
+                className="p-1 hover:bg-slate-100 rounded"
               >
-                <X className="h-5 w-5 text-gray-500" />
+                <X className="h-5 w-5 text-slate-500" />
               </button>
             </CardHeader>
             <CardContent>
@@ -271,9 +271,9 @@ export default function AdminServicesPage() {
                     type="checkbox"
                     id="isActive"
                     {...register('isActive')}
-                    className="rounded border-gray-300"
+                    className="rounded border-slate-300"
                   />
-                  <label htmlFor="isActive" className="text-sm text-gray-600">
+                  <label htmlFor="isActive" className="text-sm text-slate-600">
                     Service is active and available for booking
                   </label>
                 </div>
@@ -300,7 +300,7 @@ export default function AdminServicesPage() {
         {isLoading ? (
           <Card>
             <CardContent className="py-12 text-center">
-              <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full mx-auto" />
+              <div className="animate-spin h-8 w-8 border-2 border-sky-500 border-t-transparent rounded-full mx-auto" />
             </CardContent>
           </Card>
         ) : services.length > 0 ? (
@@ -315,27 +315,27 @@ export default function AdminServicesPage() {
                     <table className="w-full">
                       <thead>
                         <tr className="border-b text-left">
-                          <th className="py-2 px-2 text-sm font-medium text-gray-500">Service</th>
-                          <th className="py-2 px-2 text-sm font-medium text-gray-500">Price</th>
-                          <th className="py-2 px-2 text-sm font-medium text-gray-500">Turnaround</th>
-                          <th className="py-2 px-2 text-sm font-medium text-gray-500">Status</th>
-                          <th className="py-2 px-2 text-sm font-medium text-gray-500">Actions</th>
+                          <th className="py-2 px-2 text-sm font-medium text-slate-500">Service</th>
+                          <th className="py-2 px-2 text-sm font-medium text-slate-500">Price</th>
+                          <th className="py-2 px-2 text-sm font-medium text-slate-500">Turnaround</th>
+                          <th className="py-2 px-2 text-sm font-medium text-slate-500">Status</th>
+                          <th className="py-2 px-2 text-sm font-medium text-slate-500">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         {categoryServices.map((service) => (
-                          <tr key={service.id} className="border-b hover:bg-gray-50">
+                          <tr key={service.id} className="border-b hover:bg-slate-50">
                             <td className="py-3 px-2">
                               <p className="font-medium">{service.name}</p>
                               {service.description && (
-                                <p className="text-sm text-gray-500 truncate max-w-xs">{service.description}</p>
+                                <p className="text-sm text-slate-500 truncate max-w-xs">{service.description}</p>
                               )}
                             </td>
                             <td className="py-3 px-2">
                               <span className="font-medium">{formatPrice(service.price_per_unit ?? service.base_price)}</span>
-                              <span className="text-gray-500">/{service.price_type === 'per_kg' ? 'kg' : 'pc'}</span>
+                              <span className="text-slate-500">/{service.price_type === 'per_kg' ? 'kg' : 'pc'}</span>
                             </td>
-                            <td className="py-3 px-2 text-gray-600">
+                            <td className="py-3 px-2 text-slate-600">
                               {service.turnaround_hours || 48}h
                             </td>
                             <td className="py-3 px-2">
@@ -349,14 +349,14 @@ export default function AdminServicesPage() {
                               <div className="flex items-center gap-2">
                                 <button
                                   onClick={() => handleEdit(service)}
-                                  className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                                  className="p-1.5 text-slate-400 hover:text-sky-500 hover:bg-sky-50 rounded transition-colors"
                                   title="Edit"
                                 >
                                   <Edit className="h-4 w-4" />
                                 </button>
                                 <button
                                   onClick={() => handleDelete(service.id)}
-                                  className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                                  className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
                                   title="Delete"
                                 >
                                   <Trash2 className="h-4 w-4" />
@@ -375,9 +375,9 @@ export default function AdminServicesPage() {
         ) : (
           <Card>
             <CardContent className="py-12 text-center">
-              <Package className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900">No services yet</h3>
-              <p className="text-gray-600 mt-1">Add your first service to get started</p>
+              <Package className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-slate-900">No services yet</h3>
+              <p className="text-slate-600 mt-1">Add your first service to get started</p>
               <Button className="mt-4" onClick={() => setShowForm(true)}>
                 <Plus className="h-4 w-4 mr-2" />
                 Add Service

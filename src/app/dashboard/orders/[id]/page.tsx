@@ -85,20 +85,20 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
   const isCancelled = order.status === 'cancelled'
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-6">
-          <Link href="/dashboard/orders" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4">
+          <Link href="/dashboard/orders" className="inline-flex items-center text-slate-600 hover:text-slate-900 mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Orders
           </Link>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-slate-900">
                 Order #{order.order_number || order.id.slice(0, 8)}
               </h1>
-              <p className="text-gray-600">Placed on {formatDate(order.created_at)}</p>
+              <p className="text-slate-600">Placed on {formatDate(order.created_at)}</p>
             </div>
             <Badge className={`${getOrderStatusColor(order.status)} text-sm px-3 py-1`}>
               {order.status.replace('_', ' ')}
@@ -115,9 +115,9 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
             <CardContent>
               <div className="relative">
                 {/* Progress Line */}
-                <div className="absolute top-5 left-0 right-0 h-1 bg-gray-200 rounded" />
+                <div className="absolute top-5 left-0 right-0 h-1 bg-slate-200 rounded" />
                 <div 
-                  className="absolute top-5 left-0 h-1 bg-blue-600 rounded transition-all duration-500"
+                  className="absolute top-5 left-0 h-1 bg-sky-500 rounded transition-all duration-500"
                   style={{ width: `${(currentStepIndex / (ORDER_STEPS.length - 1)) * 100}%` }}
                 />
                 
@@ -132,7 +132,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                       <div key={step} className="flex flex-col items-center">
                         <div 
                           className={`w-10 h-10 rounded-full flex items-center justify-center z-10 
-                            ${isCompleted ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'}
+                            ${isCompleted ? 'bg-sky-500 text-white' : 'bg-slate-200 text-slate-500'}
                             ${isCurrent ? 'ring-4 ring-blue-200' : ''}
                           `}
                         >
@@ -142,7 +142,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                             <span className="text-sm">{index + 1}</span>
                           )}
                         </div>
-                        <span className={`mt-2 text-xs text-center max-w-[80px] ${isCurrent ? 'font-semibold text-blue-600' : 'text-gray-500'}`}>
+                        <span className={`mt-2 text-xs text-center max-w-[80px] ${isCurrent ? 'font-semibold text-sky-500' : 'text-slate-500'}`}>
                           {step.replace('_', ' ')}
                         </span>
                       </div>
@@ -162,26 +162,26 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-green-600 mt-0.5" />
+                <MapPin className="h-5 w-5 text-emerald-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-gray-900">Pickup Address</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-medium text-slate-900">Pickup Address</p>
+                  <p className="text-sm text-slate-600">
                     {order.pickup_address?.address_line1}, {order.pickup_address?.area}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-slate-500">
                     {order.preferred_pickup_time ? formatDate(order.preferred_pickup_time) : 'Not scheduled'}
                   </p>
                 </div>
               </div>
               
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-blue-600 mt-0.5" />
+                <MapPin className="h-5 w-5 text-sky-500 mt-0.5" />
                 <div>
-                  <p className="font-medium text-gray-900">Delivery Address</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-medium text-slate-900">Delivery Address</p>
+                  <p className="text-sm text-slate-600">
                     {order.delivery_address?.address_line1}, {order.delivery_address?.area}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-slate-500">
                     {order.preferred_delivery_time ? formatDate(order.preferred_delivery_time) : 'Not scheduled'}
                   </p>
                 </div>
@@ -191,9 +191,9 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                 <div className="flex items-start gap-3 pt-4 border-t">
                   <Phone className="h-5 w-5 text-purple-600 mt-0.5" />
                   <div>
-                    <p className="font-medium text-gray-900">Driver</p>
-                    <p className="text-sm text-gray-600">{order.driver?.full_name}</p>
-                    <a href={`tel:${order.driver?.phone}`} className="text-sm text-blue-600 hover:underline">
+                    <p className="font-medium text-slate-900">Driver</p>
+                    <p className="text-sm text-slate-600">{order.driver?.full_name}</p>
+                    <a href={`tel:${order.driver?.phone}`} className="text-sm text-sky-500 hover:underline">
                       {order.driver?.phone}
                     </a>
                   </div>
@@ -202,8 +202,8 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
 
               {order.special_instructions && (
                 <div className="pt-4 border-t">
-                  <p className="font-medium text-gray-900 mb-1">Special Instructions</p>
-                  <p className="text-sm text-gray-600">{order.special_instructions}</p>
+                  <p className="font-medium text-slate-900 mb-1">Special Instructions</p>
+                  <p className="text-sm text-slate-600">{order.special_instructions}</p>
                 </div>
               )}
             </CardContent>
@@ -220,7 +220,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                   <div key={item.id} className="flex justify-between">
                     <div>
                       <p className="font-medium">{item.service?.name || 'Service'}</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-slate-500">
                         Qty: {item.quantity} {item.weight_kg ? `• ${item.weight_kg} kg` : ''}
                       </p>
                     </div>
@@ -231,15 +231,15 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
               
               <div className="mt-4 pt-4 border-t space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Subtotal</span>
+                  <span className="text-slate-600">Subtotal</span>
                   <span>{formatPrice(order.subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Delivery Fee</span>
+                  <span className="text-slate-600">Delivery Fee</span>
                   <span>{formatPrice(order.delivery_fee)}</span>
                 </div>
                 {order.discount_amount > 0 && (
-                  <div className="flex justify-between text-sm text-green-600">
+                  <div className="flex justify-between text-sm text-emerald-600">
                     <span>Discount</span>
                     <span>-{formatPrice(order.discount_amount)}</span>
                   </div>
@@ -249,7 +249,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                   <span>{formatPrice(order.total_amount)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Payment</span>
+                  <span className="text-slate-600">Payment</span>
                   <Badge variant={order.payment_status === 'paid' ? 'success' : 'warning'}>
                     {order.payment_status}
                   </Badge>
@@ -270,19 +270,19 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                 {tracking.map((item, index) => (
                   <div key={item.id} className="flex gap-4">
                     <div className="flex flex-col items-center">
-                      <div className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-gray-300'}`} />
+                      <div className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-sky-500' : 'bg-slate-300'}`} />
                       {index < tracking.length - 1 && (
-                        <div className="w-0.5 h-full bg-gray-200 mt-1" />
+                        <div className="w-0.5 h-full bg-slate-200 mt-1" />
                       )}
                     </div>
                     <div className="pb-4">
-                      <p className="font-medium text-gray-900 capitalize">
+                      <p className="font-medium text-slate-900 capitalize">
                         {item.status.replace('_', ' ')}
                       </p>
                       {item.notes && (
-                        <p className="text-sm text-gray-600">{item.notes}</p>
+                        <p className="text-sm text-slate-600">{item.notes}</p>
                       )}
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-slate-500 mt-1">
                         {formatDate(item.created_at)}
                       </p>
                     </div>

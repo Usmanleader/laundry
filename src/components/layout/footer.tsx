@@ -35,22 +35,22 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-slate-900 text-slate-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main Footer */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500 shadow-md">
                 <Shirt className="h-6 w-6 text-white" />
               </div>
               <div>
                 <span className="text-xl font-bold text-white">Washerman</span>
-                <span className="text-sm text-gray-400 ml-1">Karachi</span>
+                <span className="text-sm text-slate-400 ml-1">Karachi</span>
               </div>
             </Link>
-            <p className="mt-4 text-sm text-gray-400 max-w-xs">
+            <p className="mt-4 text-sm text-slate-400 max-w-xs">
               Premium laundry services across Karachi. We pick up, clean, and deliver your clothes with care.
             </p>
             
@@ -80,7 +80,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 hover:bg-blue-600 transition-colors"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 hover:bg-sky-500 transition-colors"
                     aria-label={social.label}
                   >
                     <Icon className="h-5 w-5" />
@@ -148,12 +148,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 py-6">
+        <div className="border-t border-slate-800 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-slate-400">
               © {new Date().getFullYear()} Washerman Karachi. All rights reserved.
             </p>
-            <div className="flex items-center gap-4 text-sm text-gray-400">
+            <div className="flex items-center gap-4 text-sm text-slate-400">
               <span>🇵🇰 Made in Pakistan</span>
             </div>
           </div>

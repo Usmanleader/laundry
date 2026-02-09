@@ -179,8 +179,8 @@ function ServiceCard({
     >
       <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
-            <IconComponent className="h-6 w-6 text-blue-600" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50">
+            <IconComponent className="h-6 w-6 text-sky-600" />
           </div>
           {isPopular && (
             <span className="px-3 py-1 text-xs font-bold bg-yellow-100 text-yellow-800 rounded-full">
@@ -198,14 +198,14 @@ function ServiceCard({
         <p className="mt-4 text-lg text-gray-600">{service.description}</p>
         
         <div className="mt-6 flex flex-wrap gap-4">
-          <div className="flex items-center gap-2 text-blue-600">
+          <div className="flex items-center gap-2 text-sky-600">
             <Star className="h-5 w-5" />
             <span className="font-semibold">
               Rs. {service.base_price}
               {service.price_per_kg ? '/kg' : ' per item'}
             </span>
           </div>
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-slate-600">
             <Clock className="h-5 w-5" />
             <span>{service.estimated_duration || '24-48 hours'}</span>
           </div>
@@ -213,8 +213,8 @@ function ServiceCard({
 
         <ul className="mt-6 grid sm:grid-cols-2 gap-3">
           {(service.features || []).slice(0, 6).map((feature, i) => (
-            <li key={i} className="flex items-center gap-2 text-gray-600">
-              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+            <li key={i} className="flex items-center gap-2 text-slate-600">
+              <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
               <span className="text-sm">{feature}</span>
             </li>
           ))}
@@ -224,20 +224,20 @@ function ServiceCard({
         <div className="mt-8 flex flex-wrap items-center gap-4">
           {/* Quantity Controls */}
           {currentQuantity > 0 ? (
-            <div className="flex items-center bg-gray-100 rounded-lg overflow-hidden shadow-sm">
+            <div className="flex items-center bg-slate-100 rounded-lg overflow-hidden shadow-sm">
               <button
                 onClick={handleDecrement}
-                className="p-3 hover:bg-gray-200 transition-colors"
+                className="p-3 hover:bg-slate-200 transition-colors"
                 aria-label="Decrease quantity"
               >
                 <Minus className="h-5 w-5" />
               </button>
-              <span className="px-4 font-bold text-lg text-gray-900 min-w-[3rem] text-center">
+              <span className="px-4 font-bold text-lg text-slate-900 min-w-[3rem] text-center">
                 {currentQuantity}
               </span>
               <button
                 onClick={handleIncrement}
-                className="p-3 hover:bg-gray-200 transition-colors"
+                className="p-3 hover:bg-slate-200 transition-colors"
                 aria-label="Increase quantity"
               >
                 <Plus className="h-5 w-5" />
@@ -277,14 +277,14 @@ function ServiceCard({
               {items.map((item, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-sm"
+                  className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm"
                 >
                   {item}
                 </span>
               ))}
             </div>
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-blue-800">
+            <div className="mt-6 p-4 bg-sky-50 rounded-lg">
+              <p className="text-sm text-sky-800">
                 <strong>Starting Price:</strong> Rs. {service.base_price}
                 {service.price_per_kg && ` (Rs. ${service.price_per_kg}/kg)`}
               </p>
@@ -305,7 +305,7 @@ function FloatingCartSummary() {
   
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-      <div className="bg-blue-600 text-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-4">
+      <div className="bg-sky-500 text-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-4">
         <div className="flex items-center gap-3">
           <div className="bg-white/20 rounded-full p-2">
             <ShoppingCart className="h-5 w-5" />
@@ -319,7 +319,7 @@ function FloatingCartSummary() {
         <Button
           onClick={() => router.push('/booking')}
           size="sm"
-          className="bg-white text-blue-600 hover:bg-blue-50"
+          className="bg-white text-sky-600 hover:bg-sky-50"
         >
           Checkout
           <ArrowRight className="ml-1 h-4 w-4" />
@@ -362,15 +362,15 @@ export default function ServicesPage() {
   }, [])
 
   return (
-    <div className="py-12">
+    <div className="py-12 bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20">
+      <section className="bg-gradient-to-r from-sky-500 to-sky-700 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-white sm:text-5xl">Our Services</h1>
-          <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto">
+          <p className="mt-4 text-xl text-sky-100 max-w-2xl mx-auto">
             Professional laundry care for all your garments. Add services to your cart and book with ease.
           </p>
-          <div className="mt-6 flex items-center justify-center gap-2 text-blue-200">
+          <div className="mt-6 flex items-center justify-center gap-2 text-sky-200">
             <ShoppingCart className="h-5 w-5" />
             <span>Click "Add to Cart" to select services, then proceed to booking</span>
           </div>
@@ -378,20 +378,20 @@ export default function ServicesPage() {
       </section>
 
       {/* Main Services */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="space-y-16">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="grid lg:grid-cols-2 gap-12 items-center animate-pulse">
                   <div className="space-y-4">
-                    <div className="h-12 w-12 bg-gray-200 rounded-xl" />
-                    <div className="h-8 bg-gray-200 rounded w-1/3" />
-                    <div className="h-4 bg-gray-200 rounded w-full" />
-                    <div className="h-4 bg-gray-200 rounded w-2/3" />
-                    <div className="h-12 bg-gray-200 rounded w-1/3 mt-6" />
+                    <div className="h-12 w-12 bg-slate-200 rounded-xl" />
+                    <div className="h-8 bg-slate-200 rounded w-1/3" />
+                    <div className="h-4 bg-slate-200 rounded w-full" />
+                    <div className="h-4 bg-slate-200 rounded w-2/3" />
+                    <div className="h-12 bg-slate-200 rounded w-1/3 mt-6" />
                   </div>
-                  <div className="h-64 bg-gray-200 rounded-lg" />
+                  <div className="h-64 bg-slate-200 rounded-lg" />
                 </div>
               ))}
             </div>
@@ -410,11 +410,11 @@ export default function ServicesPage() {
       </section>
 
       {/* Additional Services */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900">Additional Services</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-slate-900">Additional Services</h2>
+            <p className="mt-4 text-lg text-slate-600">
               Beyond laundry, we offer specialized cleaning services
             </p>
           </div>
@@ -422,9 +422,9 @@ export default function ServicesPage() {
             {additionalServices.map((service, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900">{service.name}</h3>
-                  <p className="mt-1 text-blue-600 font-medium">{service.price}</p>
-                  <p className="mt-2 text-sm text-gray-600">{service.description}</p>
+                  <h3 className="text-lg font-semibold text-slate-900">{service.name}</h3>
+                  <p className="mt-1 text-sky-600 font-medium">{service.price}</p>
+                  <p className="mt-2 text-sm text-slate-600">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -433,16 +433,16 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-sky-500">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to Experience Premium Laundry?</h2>
-          <p className="mt-4 text-xl text-blue-100">
+          <p className="mt-4 text-xl text-sky-100">
             Schedule your first pickup today and enjoy 20% off!
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="xl" 
-              className="bg-white text-blue-600 hover:bg-blue-50"
+              className="bg-white text-sky-600 hover:bg-sky-50"
               onClick={() => router.push('/booking')}
             >
               <ShoppingCart className="mr-2 h-5 w-5" />

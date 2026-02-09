@@ -20,6 +20,10 @@ interface OrderWithProfile extends Order {
     full_name: string
     email: string
   }
+  customer_type?: 'registered' | 'guest'
+  guest_name?: string
+  guest_email?: string
+  guest_phone?: string
 }
 
 export default function AdminOrdersPage() {
@@ -39,7 +43,8 @@ export default function AdminOrdersPage() {
   const fetchOrders = async () => {
     setIsLoading(true)
     
-    let query = supabase
+    // Fetch registered orders
+    let regQuery = supabase
       .from('orders')
       .select(`
         *,
@@ -48,11 +53,44 @@ export default function AdminOrdersPage() {
       .order('created_at', { ascending: false })
 
     if (statusFilter) {
-      query = query.eq('status', statusFilter)
+      regQuery = regQuery.eq('status', statusFilter)
     }
 
-    const { data } = await query
-    setOrders((data as unknown as OrderWithProfile[]) || [])
+    const { data: regData } = await regQuery
+    const registeredOrders = (regData || []).map((o: any) => ({
+      ...o,
+      customer_type: 'registered' as const,
+    }))
+
+    // Fetch guest orders
+    let guestQuery = (supabase as any)
+      .from('guest_orders')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (statusFilter) {
+      guestQuery = guestQuery.eq('status', statusFilter)
+    }
+
+    const { data: guestData } = await guestQuery
+    const guestOrders = (guestData || []).map((o: any) => ({
+      ...o,
+      customer_type: 'guest' as const,
+      guest_name: o.guest_name,
+      guest_email: o.guest_email,
+      guest_phone: o.guest_phone,
+      profiles: {
+        full_name: o.guest_name || 'Guest',
+        email: o.guest_email || o.guest_phone || 'N/A',
+      },
+    }))
+
+    // Merge and sort by created_at descending
+    const allOrders = [...registeredOrders, ...guestOrders].sort(
+      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    )
+
+    setOrders(allOrders as unknown as OrderWithProfile[])
     setIsLoading(false)
   }
 
@@ -81,21 +119,24 @@ export default function AdminOrdersPage() {
     checkAdmin()
   }, [statusFilter])
 
-  const updateOrderStatus = async (orderId: string, newStatus: string) => {
+  const updateOrderStatus = async (orderId: string, newStatus: string, customerType?: string) => {
     try {
-      const { error } = await supabase
-        .from('orders')
+      const table = customerType === 'guest' ? 'guest_orders' : 'orders'
+      const { error } = await (supabase as any)
+        .from(table)
         .update({ status: newStatus, updated_at: new Date().toISOString() })
         .eq('id', orderId)
 
       if (error) throw error
 
-      // Add tracking entry
-      await supabase.from('order_tracking').insert({
-        order_id: orderId,
-        status: newStatus,
-        notes: `Status updated to ${newStatus}`,
-      })
+      // Add tracking entry for registered orders
+      if (customerType !== 'guest') {
+        await supabase.from('order_tracking').insert({
+          order_id: orderId,
+          status: newStatus,
+          notes: `Status updated to ${newStatus}`,
+        })
+      }
 
       toast('success', 'Status Updated', `Order status changed to ${newStatus}`)
       fetchOrders()
@@ -111,7 +152,9 @@ export default function AdminOrdersPage() {
       order.order_number?.toLowerCase().includes(searchLower) ||
       order.id.toLowerCase().includes(searchLower) ||
       order.profiles?.full_name?.toLowerCase().includes(searchLower) ||
-      order.profiles?.email?.toLowerCase().includes(searchLower)
+      order.profiles?.email?.toLowerCase().includes(searchLower) ||
+      order.guest_name?.toLowerCase().includes(searchLower) ||
+      order.guest_phone?.toLowerCase().includes(searchLower)
     )
   })
 
@@ -124,13 +167,13 @@ export default function AdminOrdersPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Manage Orders</h1>
-            <p className="text-gray-600">View and manage all customer orders</p>
+            <h1 className="text-2xl font-bold text-slate-900">Manage Orders</h1>
+            <p className="text-slate-600">View and manage all customer orders</p>
           </div>
           <Link href="/admin">
             <Button variant="outline">Back to Dashboard</Button>
@@ -142,13 +185,13 @@ export default function AdminOrdersPage() {
           <CardContent className="py-4">
             <div className="flex flex-wrap gap-4">
               <div className="relative flex-1 min-w-[200px]">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <input
                   type="text"
                   placeholder="Search by order ID, customer name or email..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               </div>
               <Select
@@ -169,35 +212,46 @@ export default function AdminOrdersPage() {
           <CardContent>
             {isLoading ? (
               <div className="py-12 text-center">
-                <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full mx-auto" />
+                <div className="animate-spin h-8 w-8 border-2 border-sky-500 border-t-transparent rounded-full mx-auto" />
               </div>
             ) : filteredOrders.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b text-left">
-                      <th className="py-3 px-4 text-sm font-medium text-gray-500">Order ID</th>
-                      <th className="py-3 px-4 text-sm font-medium text-gray-500">Customer</th>
-                      <th className="py-3 px-4 text-sm font-medium text-gray-500">Date</th>
-                      <th className="py-3 px-4 text-sm font-medium text-gray-500">Amount</th>
-                      <th className="py-3 px-4 text-sm font-medium text-gray-500">Status</th>
-                      <th className="py-3 px-4 text-sm font-medium text-gray-500">Payment</th>
-                      <th className="py-3 px-4 text-sm font-medium text-gray-500">Actions</th>
+                      <th className="py-3 px-4 text-sm font-medium text-slate-500">Order ID</th>
+                      <th className="py-3 px-4 text-sm font-medium text-slate-500">Customer</th>
+                      <th className="py-3 px-4 text-sm font-medium text-slate-500">Date</th>
+                      <th className="py-3 px-4 text-sm font-medium text-slate-500">Amount</th>
+                      <th className="py-3 px-4 text-sm font-medium text-slate-500">Status</th>
+                      <th className="py-3 px-4 text-sm font-medium text-slate-500">Payment</th>
+                      <th className="py-3 px-4 text-sm font-medium text-slate-500">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredOrders.map((order) => (
-                      <tr key={order.id} className="border-b hover:bg-gray-50">
+                      <tr key={order.id} className="border-b hover:bg-slate-50">
                         <td className="py-3 px-4">
                           <span className="font-medium">
                             #{order.order_number || order.id.slice(0, 8)}
                           </span>
                         </td>
                         <td className="py-3 px-4">
-                          <p className="font-medium">{order.profiles?.full_name || 'N/A'}</p>
-                          <p className="text-sm text-gray-500">{order.profiles?.email}</p>
+                          <p className="font-medium">
+                            {order.profiles?.full_name || 'N/A'}
+                            {order.customer_type === 'guest' && (
+                              <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-800">
+                                Guest
+                              </span>
+                            )}
+                          </p>
+                          <p className="text-sm text-slate-500">
+                            {order.customer_type === 'guest' 
+                              ? order.guest_phone || order.guest_email || 'N/A'
+                              : order.profiles?.email}
+                          </p>
                         </td>
-                        <td className="py-3 px-4 text-sm text-gray-600">
+                        <td className="py-3 px-4 text-sm text-slate-600">
                           {formatDate(order.created_at)}
                         </td>
                         <td className="py-3 px-4 font-medium">
@@ -206,7 +260,7 @@ export default function AdminOrdersPage() {
                         <td className="py-3 px-4">
                           <select
                             value={order.status}
-                            onChange={(e) => updateOrderStatus(order.id, e.target.value)}
+                            onChange={(e) => updateOrderStatus(order.id, e.target.value, order.customer_type)}
                             className={`text-sm rounded-full px-3 py-1 font-medium border-0 cursor-pointer ${getOrderStatusColor(order.status)}`}
                           >
                             {ORDER_STATUSES.map(status => (
@@ -237,8 +291,8 @@ export default function AdminOrdersPage() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <Package className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-600">No orders found</p>
+                <Package className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+                <p className="text-slate-600">No orders found</p>
               </div>
             )}
           </CardContent>

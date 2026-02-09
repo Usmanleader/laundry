@@ -137,12 +137,12 @@ const faqs = [
 
 export default function PricingPage() {
   return (
-    <div>
+    <div className="bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20">
+      <section className="bg-gradient-to-r from-sky-500 to-sky-700 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-white sm:text-5xl">Simple, Transparent Pricing</h1>
-          <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto">
+          <p className="mt-4 text-xl text-sky-100 max-w-2xl mx-auto">
             No hidden fees. Pay only for what you use. Quality laundry at affordable prices.
           </p>
         </div>
@@ -152,40 +152,40 @@ export default function PricingPage() {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Service Pricing</h2>
-            <p className="mt-4 text-gray-600">Choose the service that fits your needs</p>
+            <h2 className="text-3xl font-bold text-slate-900">Service Pricing</h2>
+            <p className="mt-4 text-slate-600">Choose the service that fits your needs</p>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {mainServices.map((service, index) => (
               <Card 
                 key={index} 
-                className={`relative ${service.popular ? 'border-2 border-blue-600 shadow-xl' : 'shadow-lg'}`}
+                className={`relative ${service.popular ? 'border-2 border-sky-500 shadow-xl' : 'shadow-lg'}`}
               >
                 {service.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-sky-500 text-white text-xs font-bold rounded-full">
                     POPULAR
                   </div>
                 )}
                 <CardHeader className="text-center pb-2">
                   <CardTitle className="text-xl">{service.name}</CardTitle>
                   <div className="mt-4">
-                    <span className="text-4xl font-bold text-gray-900">Rs. {service.price}</span>
-                    <span className="text-gray-500">/{service.unit}</span>
+                    <span className="text-4xl font-bold text-slate-900">Rs. {service.price}</span>
+                    <span className="text-slate-500">/{service.unit}</span>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">{service.description}</p>
+                  <p className="text-sm text-slate-500 mt-2">{service.description}</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                      <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                        <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-4 p-3 bg-gray-50 rounded-lg text-center">
-                    <span className="text-sm text-gray-600">Min: {service.minOrder}</span>
+                  <div className="mt-4 p-3 bg-slate-50 rounded-lg text-center">
+                    <span className="text-sm text-slate-600">Min: {service.minOrder}</span>
                   </div>
                   <Link href="/booking" className="mt-4 block">
                     <Button className="w-full" variant={service.popular ? 'default' : 'outline'}>
@@ -200,25 +200,25 @@ export default function PricingPage() {
       </section>
 
       {/* Item-wise Pricing */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Dry Cleaning - Per Item Pricing</h2>
-            <p className="mt-4 text-gray-600">For delicate items, we recommend per-item dry cleaning</p>
+            <h2 className="text-3xl font-bold text-slate-900">Dry Cleaning - Per Item Pricing</h2>
+            <p className="mt-4 text-slate-600">For delicate items, we recommend per-item dry cleaning</p>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {itemPricing.map((category, index) => (
               <Card key={index}>
                 <CardHeader>
-                  <CardTitle className="text-lg text-blue-600">{category.category}</CardTitle>
+                  <CardTitle className="text-lg text-sky-600">{category.category}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {category.items.map((item, i) => (
                       <li key={i} className="flex justify-between text-sm">
-                        <span className="text-gray-600">{item.name}</span>
-                        <span className="font-medium text-gray-900">Rs. {item.price}</span>
+                        <span className="text-slate-600">{item.name}</span>
+                        <span className="font-medium text-slate-900">Rs. {item.price}</span>
                       </li>
                     ))}
                   </ul>
@@ -233,8 +233,8 @@ export default function PricingPage() {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Delivery Charges</h2>
-            <p className="mt-4 text-gray-600">Free pickup for orders above Rs. 500</p>
+            <h2 className="text-3xl font-bold text-slate-900">Delivery Charges</h2>
+            <p className="mt-4 text-slate-600">Free pickup for orders above Rs. 500</p>
           </div>
           
           <div className="max-w-2xl mx-auto">
@@ -243,8 +243,8 @@ export default function PricingPage() {
                 <div className="grid grid-cols-2 gap-4">
                   {deliveryFees.map((area, index) => (
                     <div key={index} className="flex justify-between py-2 border-b last:border-0">
-                      <span className="text-gray-600">{area.area}</span>
-                      <span className="font-medium text-gray-900">Rs. {area.fee}</span>
+                      <span className="text-slate-600">{area.area}</span>
+                      <span className="font-medium text-slate-900">Rs. {area.fee}</span>
                     </div>
                   ))}
                 </div>
@@ -255,10 +255,10 @@ export default function PricingPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
           </div>
           
           <div className="space-y-4">
@@ -266,10 +266,10 @@ export default function PricingPage() {
               <Card key={index}>
                 <CardContent className="p-6">
                   <div className="flex gap-3">
-                    <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <HelpCircle className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <h3 className="font-semibold text-gray-900">{faq.question}</h3>
-                      <p className="mt-2 text-gray-600">{faq.answer}</p>
+                      <h3 className="font-semibold text-slate-900">{faq.question}</h3>
+                      <p className="mt-2 text-slate-600">{faq.answer}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -280,14 +280,14 @@ export default function PricingPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-sky-500">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to Get Started?</h2>
-          <p className="mt-4 text-xl text-blue-100">
+          <p className="mt-4 text-xl text-sky-100">
             Use code WELCOME20 for 20% off your first order
           </p>
           <Link href="/booking" className="mt-8 inline-block">
-            <Button size="xl" className="bg-white text-blue-600 hover:bg-blue-50">
+            <Button size="xl" className="bg-white text-sky-600 hover:bg-sky-50">
               Book Your Pickup
             </Button>
           </Link>

@@ -53,8 +53,8 @@ export default function ForgotPasswordPage() {
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
               <CheckCircle className="h-8 w-8 text-green-600" />
             </div>
-            <h2 className="mt-6 text-2xl font-bold text-gray-900">Check Your Email</h2>
-            <p className="mt-4 text-gray-600">
+            <h2 className="mt-6 text-2xl font-bold text-slate-900">Check Your Email</h2>
+            <p className="mt-4 text-slate-600">
               If an account exists with that email, we&apos;ve sent you a password reset link.
             </p>
             <Link href="/auth/login" className="mt-6 inline-block">
@@ -70,11 +70,11 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-12 px-4">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center py-12 px-4 bg-white">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <Link href="/" className="inline-flex items-center justify-center gap-2 mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500 shadow-md">
               <Shirt className="h-7 w-7 text-white" />
             </div>
           </Link>
@@ -100,7 +100,7 @@ export default function ForgotPasswordPage() {
 
           <Link 
             href="/auth/login" 
-            className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-gray-900"
+            className="mt-6 flex items-center justify-center gap-2 text-sm text-slate-600 hover:text-slate-900"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Login

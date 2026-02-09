@@ -77,12 +77,12 @@ const timeline = [
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20">
+      <section className="bg-gradient-to-r from-sky-500 to-sky-700 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-white sm:text-5xl">About Washerman</h1>
-          <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto">
+          <p className="mt-4 text-xl text-sky-100 max-w-2xl mx-auto">
             Making quality laundry services accessible to everyone in Karachi since 2020.
           </p>
         </div>
@@ -94,8 +94,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-blue-600">{stat.value}</div>
-                <div className="mt-1 text-gray-600">{stat.label}</div>
+                <div className="text-3xl sm:text-4xl font-bold text-sky-500">{stat.value}</div>
+                <div className="mt-1 text-slate-600">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -107,8 +107,8 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">Our Story</h2>
-              <div className="mt-6 space-y-4 text-gray-600">
+              <h2 className="text-3xl font-bold text-slate-900">Our Story</h2>
+              <div className="mt-6 space-y-4 text-slate-600">
                 <p>
                   Washerman Karachi was born out of a simple observation: busy professionals and families 
                   in Karachi needed a reliable, quality laundry service that respects their time and their clothes.
@@ -124,15 +124,15 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="bg-gray-100 rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Our Journey</h3>
+            <div className="bg-slate-100 rounded-2xl p-8">
+              <h3 className="text-xl font-semibold text-slate-900 mb-6">Our Journey</h3>
               <div className="space-y-6">
                 {timeline.map((item, index) => (
                   <div key={index} className="flex gap-4">
-                    <div className="flex-shrink-0 w-16 text-sm font-bold text-blue-600">{item.year}</div>
+                    <div className="flex-shrink-0 w-16 text-sm font-bold text-sky-600">{item.year}</div>
                     <div>
-                      <div className="font-medium text-gray-900">{item.title}</div>
-                      <div className="text-sm text-gray-600">{item.description}</div>
+                      <div className="font-medium text-slate-900">{item.title}</div>
+                      <div className="text-sm text-slate-600">{item.description}</div>
                     </div>
                   </div>
                 ))}
@@ -143,22 +143,22 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Our Values</h2>
-            <p className="mt-4 text-gray-600">What drives us every day</p>
+            <h2 className="text-3xl font-bold text-slate-900">Our Values</h2>
+            <p className="mt-4 text-slate-600">What drives us every day</p>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <Card key={index} className="border-0 shadow-lg">
                 <CardContent className="p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
-                    <value.icon className="h-6 w-6 text-blue-600" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50">
+                    <value.icon className="h-6 w-6 text-sky-600" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-gray-900">{value.title}</h3>
-                  <p className="mt-2 text-gray-600">{value.description}</p>
+                  <h3 className="mt-4 text-lg font-semibold text-slate-900">{value.title}</h3>
+                  <p className="mt-2 text-slate-600">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -170,19 +170,19 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Meet Our Team</h2>
-            <p className="mt-4 text-gray-600">The people behind Washerman</p>
+            <h2 className="text-3xl font-bold text-slate-900">Meet Our Team</h2>
+            <p className="mt-4 text-slate-600">The people behind Washerman</p>
           </div>
           
           <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {team.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center text-white text-3xl font-bold">
+                <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-r from-sky-500 to-sky-700 flex items-center justify-center text-white text-3xl font-bold">
                   {member.name.charAt(0)}
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-gray-900">{member.name}</h3>
-                <p className="text-blue-600">{member.role}</p>
-                <p className="mt-2 text-sm text-gray-600">{member.bio}</p>
+                <h3 className="mt-4 text-lg font-semibold text-slate-900">{member.name}</h3>
+                <p className="text-sky-600">{member.role}</p>
+                <p className="mt-2 text-sm text-slate-600">{member.bio}</p>
               </div>
             ))}
           </div>
@@ -190,15 +190,15 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-blue-600">
+      <section className="py-20 bg-sky-500">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white">Join Our Growing Family</h2>
-          <p className="mt-4 text-xl text-blue-100">
+          <p className="mt-4 text-xl text-sky-100">
             Experience the Washerman difference for yourself
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/booking">
-              <Button size="xl" className="bg-white text-blue-600 hover:bg-blue-50">
+              <Button size="xl" className="bg-white text-sky-600 hover:bg-sky-50">
                 Book Your First Pickup
               </Button>
             </Link>

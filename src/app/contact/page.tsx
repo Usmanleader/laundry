@@ -75,39 +75,39 @@ export default function ContactPage() {
   }
 
   return (
-    <div>
+    <div className="bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20">
+      <section className="bg-gradient-to-r from-sky-500 to-sky-700 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-white sm:text-5xl">Contact Us</h1>
-          <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto">
+          <p className="mt-4 text-xl text-sky-100 max-w-2xl mx-auto">
             Have questions? We&apos;re here to help. Reach out to us anytime.
           </p>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
               <Card key={index} className="text-center">
                 <CardContent className="p-6">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
-                    <info.icon className="h-6 w-6 text-blue-600" />
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50">
+                    <info.icon className="h-6 w-6 text-sky-600" />
                   </div>
-                  <h3 className="mt-4 font-semibold text-gray-900">{info.title}</h3>
+                  <h3 className="mt-4 font-semibold text-slate-900">{info.title}</h3>
                   {info.details.map((detail, i) => (
                     info.action ? (
                       <a
                         key={i}
                         href={info.action}
-                        className="block mt-1 text-sm text-gray-600 hover:text-blue-600"
-                      >
-                        {detail}
-                      </a>
+                      className="block mt-1 text-sm text-slate-600 hover:text-sky-600"
+                    >
+                      {detail}
+                    </a>
                     ) : (
-                      <p key={i} className="mt-1 text-sm text-gray-600">{detail}</p>
+                      <p key={i} className="mt-1 text-sm text-slate-600">{detail}</p>
                     )
                   ))}
                 </CardContent>
@@ -123,10 +123,10 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="h-8 w-8 text-blue-600" />
-                <h2 className="text-3xl font-bold text-gray-900">Send us a Message</h2>
+                <MessageSquare className="h-8 w-8 text-sky-600" />
+                <h2 className="text-3xl font-bold text-slate-900">Send us a Message</h2>
               </div>
-              <p className="text-gray-600 mb-8">
+              <p className="text-slate-600 mb-8">
                 Fill out the form below and we&apos;ll get back to you within 24 hours.
               </p>
               
@@ -178,10 +178,10 @@ export default function ContactPage() {
             </div>
             
             {/* Map Placeholder */}
-            <div className="bg-gray-200 rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center">
+            <div className="bg-slate-200 rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center">
               <div className="text-center p-8">
-                <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600">
+                <MapPin className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+                <p className="text-slate-600">
                   Map integration coming soon!
                   <br />
                   <span className="text-sm">Block 7, Clifton, Karachi</span>

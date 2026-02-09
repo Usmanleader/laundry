@@ -39,13 +39,13 @@ export default async function OrdersPage() {
     .order('created_at', { ascending: false }) as { data: OrderWithAddresses[] | null }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">My Orders</h1>
-            <p className="text-gray-600">Track and manage your laundry orders</p>
+            <h1 className="text-2xl font-bold text-slate-900">My Orders</h1>
+            <p className="text-slate-600">Track and manage your laundry orders</p>
           </div>
           <Link href="/booking">
             <Button>
@@ -60,11 +60,11 @@ export default async function OrdersPage() {
           <CardContent className="py-4">
             <div className="flex flex-wrap gap-4">
               <div className="relative flex-1 min-w-[200px]">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <input
                   type="text"
                   placeholder="Search orders..."
-                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
               </div>
               <Button variant="outline">
@@ -89,25 +89,25 @@ export default async function OrdersPage() {
                     href={`/dashboard/orders/${order.id}`}
                     className="block"
                   >
-                    <div className="p-4 rounded-lg border hover:bg-gray-50 transition-colors">
+                    <div className="p-4 rounded-lg border hover:bg-slate-50 transition-colors">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="flex items-start gap-4">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 flex-shrink-0">
-                            <Package className="h-6 w-6 text-blue-600" />
+                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 flex-shrink-0">
+                            <Package className="h-6 w-6 text-sky-500" />
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <p className="font-semibold text-gray-900">
+                              <p className="font-semibold text-slate-900">
                                 Order #{order.order_number || order.id.slice(0, 8)}
                               </p>
                               <Badge className={getOrderStatusColor(order.status)}>
                                 {order.status.replace('_', ' ')}
                               </Badge>
                             </div>
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-slate-500 mt-1">
                               Placed on {formatDate(order.created_at)}
                             </p>
-                            <div className="flex flex-wrap gap-4 mt-2 text-sm text-gray-600">
+                            <div className="flex flex-wrap gap-4 mt-2 text-sm text-slate-600">
                               <span>
                                 Pickup: {(order.pickup_address as { label: string; area: string })?.label || 'N/A'}, {(order.pickup_address as { label: string; area: string })?.area || ''}
                               </span>
@@ -119,10 +119,10 @@ export default async function OrdersPage() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-lg font-semibold text-gray-900">
+                          <p className="text-lg font-semibold text-slate-900">
                             {formatPrice(order.total_amount)}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-slate-500">
                             {order.payment_status === 'paid' ? 'Paid' : 'Payment Pending'}
                           </p>
                         </div>
@@ -133,9 +133,9 @@ export default async function OrdersPage() {
               </div>
             ) : (
               <div className="text-center py-16">
-                <Package className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900">No orders yet</h3>
-                <p className="text-gray-600 mt-1">Book your first pickup to get started</p>
+                <Package className="h-16 w-16 text-slate-300 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-slate-900">No orders yet</h3>
+                <p className="text-slate-600 mt-1">Book your first pickup to get started</p>
                 <Link href="/booking" className="mt-6 inline-block">
                   <Button>Book Now</Button>
                 </Link>

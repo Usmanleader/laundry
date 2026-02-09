@@ -67,17 +67,17 @@ export function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500 shadow-md">
               <Shirt className="h-6 w-6 text-white" />
             </div>
             <div>
-              <span className="text-xl font-bold text-gray-900">Washerman</span>
-              <span className="hidden sm:inline text-sm text-gray-500 ml-1">Karachi</span>
+              <span className="text-xl font-bold text-slate-900">Washerman</span>
+              <span className="hidden sm:inline text-sm text-slate-500 ml-1">Karachi</span>
             </div>
           </Link>
 
@@ -90,8 +90,8 @@ export function Navbar() {
                 className={cn(
                   'px-3 py-2 text-sm font-medium rounded-lg transition-colors',
                   pathname === link.href
-                    ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    ? 'bg-sky-50 text-sky-700'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                 )}
               >
                 {link.label}
@@ -108,21 +108,23 @@ export function Navbar() {
                   <Button variant="ghost" size="sm" className="relative">
                     <ShoppingCart className="h-5 w-5" />
                     {cartCount > 0 && (
-                      <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      <span className="absolute -top-1 -right-1 bg-sky-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                         {cartCount}
                       </span>
                     )}
                   </Button>
                 </Link>
                 
+                {/* Book Now - always visible for everyone */}
+                <Link href="/booking" className="hidden md:inline-flex">
+                  <Button size="sm">
+                    <ShoppingBag className="h-4 w-4" />
+                    Book Now
+                  </Button>
+                </Link>
+
                 {user ? (
-                  <div className="hidden md:flex items-center gap-3">
-                    <Link href="/booking">
-                      <Button size="sm">
-                        <ShoppingBag className="h-4 w-4" />
-                        Book Now
-                      </Button>
-                    </Link>
+                  <div className="hidden md:flex items-center gap-2">
                     <Link href="/dashboard">
                       <Button variant="ghost" size="sm">
                         <LayoutDashboard className="h-4 w-4" />
@@ -138,7 +140,7 @@ export function Navbar() {
                     )}
                     <button
                       onClick={handleSignOut}
-                      className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"
+                      className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900"
                     >
                       <LogOut className="h-4 w-4" />
                     </button>
@@ -151,7 +153,7 @@ export function Navbar() {
                       </Button>
                     </Link>
                     <Link href="/auth/register">
-                      <Button size="sm">
+                      <Button variant="outline" size="sm">
                         Sign Up
                       </Button>
                     </Link>
@@ -163,7 +165,7 @@ export function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-gray-600 hover:text-gray-900"
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -184,8 +186,8 @@ export function Navbar() {
                     className={cn(
                       'flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors',
                       pathname === link.href
-                        ? 'bg-blue-50 text-blue-700'
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                        ? 'bg-sky-50 text-sky-700'
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                     )}
                   >
                     <Icon className="h-5 w-5" />
@@ -195,20 +197,21 @@ export function Navbar() {
               })}
 
               <div className="border-t pt-2 mt-2">
+                {/* Book Now - always visible in mobile */}
+                <Link
+                  href="/booking"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2 text-sm font-bold text-sky-600"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  Book Now
+                </Link>
                 {user ? (
                   <>
                     <Link
-                      href="/booking"
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-blue-600"
-                    >
-                      <ShoppingBag className="h-5 w-5" />
-                      Book Now
-                    </Link>
-                    <Link
                       href="/dashboard"
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-600"
+                      className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600"
                     >
                       <LayoutDashboard className="h-5 w-5" />
                       Dashboard
@@ -218,7 +221,7 @@ export function Navbar() {
                         handleSignOut()
                         setIsOpen(false)
                       }}
-                      className="flex w-full items-center gap-3 px-3 py-2 text-sm font-medium text-red-600"
+                      className="flex w-full items-center gap-3 px-3 py-2 text-sm font-medium text-red-500"
                     >
                       <LogOut className="h-5 w-5" />
                       Sign Out
@@ -229,7 +232,7 @@ export function Navbar() {
                     <Link
                       href="/auth/login"
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-600"
+                      className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600"
                     >
                       <User className="h-5 w-5" />
                       Login
@@ -237,7 +240,7 @@ export function Navbar() {
                     <Link
                       href="/auth/register"
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-blue-600"
+                      className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-sky-600"
                     >
                       <User className="h-5 w-5" />
                       Sign Up

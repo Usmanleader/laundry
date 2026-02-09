@@ -35,8 +35,9 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Protected routes
-  const protectedPaths = ['/dashboard', '/booking', '/admin']
+  // Protected routes - only dashboard and admin require auth
+  // Booking is open to all users (guest checkout supported)
+  const protectedPaths = ['/dashboard', '/admin']
   const isProtectedPath = protectedPaths.some(path => 
     request.nextUrl.pathname.startsWith(path)
   )

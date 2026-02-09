@@ -17,15 +17,15 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
       <div className="text-center max-w-md">
         <div className="flex justify-center mb-6">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
-            <AlertTriangle className="h-10 w-10 text-red-600" />
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-red-50">
+            <AlertTriangle className="h-10 w-10 text-red-500" />
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Something went wrong!</h1>
-        <p className="text-gray-600 mb-6">
+        <h1 className="text-2xl font-bold text-slate-900 mb-2">Something went wrong!</h1>
+        <p className="text-slate-600 mb-6">
           We encountered an unexpected error. Please try again or contact support if the problem persists.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -41,7 +41,7 @@ export default function Error({
           </Link>
         </div>
         {error.digest && (
-          <p className="mt-6 text-xs text-gray-400">Error ID: {error.digest}</p>
+          <p className="mt-6 text-xs text-slate-400">Error ID: {error.digest}</p>
         )}
       </div>
     </div>

@@ -70,71 +70,79 @@ const testimonials = [
 ]
 
 const areas = [
-  'DHA', 'Clifton', 'PECHS', 'Gulshan', 'Gulistan-e-Johar', 'North Nazimabad', 
+  'DHA', 'Clifton', 'PECHS', 'Gulshan', 'Gulistan-e-Johar', 'North Nazimabad',
   'Saddar', 'Garden', 'FB Area', 'Bahria Town'
 ]
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white">
       {/* Hero Section */}
       <section className="hero-gradient relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
-              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-blue-100 bg-white/20 rounded-full">
-                🎉 20% OFF on your first order - Use code: WELCOME20
+              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+                🎉 20% OFF on your first order — Use code: WELCOME20
               </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Premium Laundry
                 <br />
-                <span className="text-blue-200">Delivered to Your Door</span>
+                <span className="text-sky-200">Delivered to Your Door</span>
               </h1>
-              <p className="mt-6 text-lg text-blue-100 max-w-xl">
-                Experience the convenience of professional laundry services across Karachi. 
+              <p className="mt-6 text-lg text-sky-100 max-w-xl leading-relaxed">
+                Experience the convenience of professional laundry services across Karachi.
                 We pick up, clean, and deliver your clothes with care.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link href="/booking">
-                  <Button size="xl" className="w-full sm:w-auto bg-white text-blue-600 hover:bg-blue-50">
+                  <Button size="xl" className="w-full sm:w-auto bg-white text-sky-600 hover:bg-sky-50 shadow-lg hover:shadow-xl transition-all">
                     Book Now
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
                 <Link href="/pricing">
-                  <Button size="xl" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10">
+                  <Button size="xl" variant="outline" className="w-full sm:w-auto border-2 border-white text-white bg-white/15 hover:bg-white hover:text-sky-600 backdrop-blur-sm shadow-lg transition-all">
                     View Pricing
                   </Button>
                 </Link>
               </div>
-              <div className="mt-8 flex items-center gap-6 justify-center lg:justify-start text-white/80">
+              <div className="mt-8 flex items-center gap-6 justify-center lg:justify-start text-white/90">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span className="text-sm">Free Pickup</span>
+                  <CheckCircle className="h-5 w-5 text-emerald-300" />
+                  <span className="text-sm font-medium">Free Pickup</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span className="text-sm">48hr Delivery</span>
+                  <CheckCircle className="h-5 w-5 text-emerald-300" />
+                  <span className="text-sm font-medium">48hr Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span className="text-sm">Insured</span>
+                  <CheckCircle className="h-5 w-5 text-emerald-300" />
+                  <span className="text-sm font-medium">Insured</span>
                 </div>
               </div>
             </div>
             <div className="hidden lg:block relative">
-              <div className="absolute -top-10 -right-10 w-72 h-72 bg-blue-400 rounded-full opacity-30 blur-3xl" />
-              <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-blue-300 rounded-full opacity-30 blur-3xl" />
-              <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+              <div className="absolute -top-10 -right-10 w-72 h-72 bg-sky-400 rounded-full opacity-20 blur-3xl animate-float" />
+              <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-sky-300 rounded-full opacity-20 blur-3xl" />
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
                 <div className="grid grid-cols-2 gap-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="aspect-square rounded-2xl bg-white/20" />
+                  {[
+                    { icon: '👔', label: 'Dry Clean' },
+                    { icon: '👕', label: 'Wash & Fold' },
+                    { icon: '👗', label: 'Premium' },
+                    { icon: '🧥', label: 'Iron & Press' },
+                  ].map((item, i) => (
+                    <div key={i} className="aspect-square rounded-2xl bg-white/20 backdrop-blur-sm flex flex-col items-center justify-center gap-2 hover:bg-white/30 transition-colors">
+                      <span className="text-3xl">{item.icon}</span>
+                      <span className="text-sm text-white/90 font-medium">{item.label}</span>
+                    </div>
                   ))}
                 </div>
                 <div className="mt-6 text-center text-white">
                   <div className="text-4xl font-bold">10,000+</div>
-                  <div className="text-blue-200">Happy Customers</div>
+                  <div className="text-sky-200 font-medium">Happy Customers</div>
                 </div>
               </div>
             </div>
@@ -143,30 +151,30 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">How It Works</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">How It Works</h2>
+            <p className="mt-4 text-lg text-slate-600">
               Getting your laundry done has never been easier
             </p>
           </div>
           <div className="mt-16 grid md:grid-cols-4 gap-8">
             {[
-              { step: '1', title: 'Book Online', description: 'Schedule a pickup time that works for you' },
-              { step: '2', title: 'We Pick Up', description: 'Our driver collects your laundry from your door' },
-              { step: '3', title: 'We Clean', description: 'Expert cleaning with premium products' },
-              { step: '4', title: 'We Deliver', description: 'Fresh clothes delivered back to you' },
+              { step: '1', title: 'Book Online', description: 'Schedule a pickup time that works for you', emoji: '📱' },
+              { step: '2', title: 'We Pick Up', description: 'Our driver collects your laundry from your door', emoji: '🚗' },
+              { step: '3', title: 'We Clean', description: 'Expert cleaning with premium products', emoji: '✨' },
+              { step: '4', title: 'We Deliver', description: 'Fresh clothes delivered back to you', emoji: '📦' },
             ].map((item, index) => (
-              <div key={index} className="relative text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-white text-2xl font-bold">
-                  {item.step}
+              <div key={index} className="relative text-center group">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-500 text-white text-2xl font-bold shadow-lg shadow-sky-500/30 group-hover:scale-110 transition-transform duration-300">
+                  {item.emoji}
                 </div>
                 {index < 3 && (
-                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] border-t-2 border-dashed border-gray-300" />
+                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] border-t-2 border-dashed border-slate-300" />
                 )}
-                <h3 className="mt-6 text-xl font-semibold text-gray-900">{item.title}</h3>
-                <p className="mt-2 text-gray-600">{item.description}</p>
+                <h3 className="mt-6 text-xl font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-2 text-slate-600">{item.description}</p>
               </div>
             ))}
           </div>
@@ -174,23 +182,23 @@ export default function HomePage() {
       </section>
 
       {/* Features */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Why Choose Washerman?</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Why Choose Washerman?</h2>
+            <p className="mt-4 text-lg text-slate-600">
               We&apos;re committed to making your life easier with premium laundry services
             </p>
           </div>
           <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="service-card border-0 shadow-lg">
+              <Card key={index} className="service-card border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6 text-center">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-blue-100">
-                    <feature.icon className="h-7 w-7 text-blue-600" />
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-sky-50">
+                    <feature.icon className="h-7 w-7 text-sky-600" />
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-gray-900">{feature.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{feature.description}</p>
+                  <h3 className="mt-4 text-lg font-semibold text-slate-900">{feature.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -199,33 +207,33 @@ export default function HomePage() {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Our Services</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Our Services</h2>
+            <p className="mt-4 text-lg text-slate-600">
               Professional care for all your garments
             </p>
           </div>
           <div className="mt-16 grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card 
-                key={index} 
-                className={`service-card relative overflow-hidden ${service.popular ? 'border-2 border-blue-600 shadow-xl' : 'border shadow-lg'}`}
+              <Card
+                key={index}
+                className={`service-card relative overflow-hidden transition-all duration-300 hover:-translate-y-1 ${service.popular ? 'border-2 border-sky-500 shadow-xl shadow-sky-500/10' : 'border border-slate-200 shadow-lg'}`}
               >
                 {service.popular && (
-                  <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                  <div className="absolute top-0 right-0 bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                     POPULAR
                   </div>
                 )}
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
-                  <div className="mt-2 text-3xl font-bold text-blue-600">{service.price}</div>
-                  <p className="mt-2 text-gray-600">{service.description}</p>
+                  <h3 className="text-xl font-bold text-slate-900">{service.title}</h3>
+                  <div className="mt-2 text-3xl font-bold text-sky-600">{service.price}</div>
+                  <p className="mt-2 text-slate-600">{service.description}</p>
                   <ul className="mt-6 space-y-3">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                      <li key={i} className="flex items-center gap-2 text-sm text-slate-700">
+                        <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -251,31 +259,31 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">What Our Customers Say</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">What Our Customers Say</h2>
+            <p className="mt-4 text-lg text-slate-600">
               Join thousands of happy customers across Karachi
             </p>
           </div>
           <div className="mt-16 grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="service-card shadow-lg">
+              <Card key={index} className="service-card shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
                   <div className="flex gap-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <p className="mt-4 text-gray-600 italic">&ldquo;{testimonial.comment}&rdquo;</p>
+                  <p className="mt-4 text-slate-600 italic leading-relaxed">&ldquo;{testimonial.comment}&rdquo;</p>
                   <div className="mt-6 flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                    <div className="h-10 w-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">{testimonial.name}</div>
-                      <div className="text-sm text-gray-500">{testimonial.location}</div>
+                      <div className="font-semibold text-slate-900">{testimonial.name}</div>
+                      <div className="text-sm text-slate-500">{testimonial.location}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -286,11 +294,11 @@ export default function HomePage() {
       </section>
 
       {/* Service Areas */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">We Serve All of Karachi</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">We Serve All of Karachi</h2>
+            <p className="mt-4 text-lg text-slate-600">
               Pickup and delivery available in major areas
             </p>
           </div>
@@ -298,13 +306,13 @@ export default function HomePage() {
             {areas.map((area, index) => (
               <span
                 key={index}
-                className="px-4 py-2 bg-white rounded-full text-gray-700 shadow-sm border hover:border-blue-500 hover:text-blue-600 transition-colors cursor-default"
+                className="px-5 py-2.5 bg-white rounded-full text-slate-700 font-medium shadow-sm border border-slate-200 hover:border-sky-400 hover:text-sky-600 hover:shadow-md transition-all cursor-default"
               >
                 {area}
               </span>
             ))}
           </div>
-          <p className="mt-8 text-center text-gray-500">
+          <p className="mt-8 text-center text-slate-500">
             And many more areas! Contact us if your area is not listed.
           </p>
         </div>
@@ -316,18 +324,18 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
             Ready to Get Started?
           </h2>
-          <p className="mt-4 text-xl text-blue-100">
+          <p className="mt-4 text-xl text-sky-100">
             Book your first pickup today and enjoy 20% off with code WELCOME20
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/booking">
-              <Button size="xl" className="w-full sm:w-auto bg-white text-blue-600 hover:bg-blue-50">
+              <Button size="xl" className="w-full sm:w-auto bg-white text-sky-600 hover:bg-sky-50 shadow-lg">
                 Book Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <a href="tel:+923001234567">
-              <Button size="xl" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white/10">
+              <Button size="xl" variant="outline" className="w-full sm:w-auto border-white/60 text-white hover:bg-white/10">
                 <Phone className="mr-2 h-5 w-5" />
                 Call Us
               </Button>

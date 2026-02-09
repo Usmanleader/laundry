@@ -134,18 +134,18 @@ export default function AdminOrderDetailPage({ params }: PageProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
-        <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full" />
+      <div className="min-h-screen bg-slate-50 py-8 flex items-center justify-center">
+        <div className="animate-spin h-8 w-8 border-2 border-sky-500 border-t-transparent rounded-full" />
       </div>
     )
   }
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8">
+      <div className="min-h-screen bg-slate-50 py-8">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900">Order not found</h2>
+          <Package className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-slate-900">Order not found</h2>
           <Link href="/admin/orders" className="mt-4 inline-block">
             <Button>Back to Orders</Button>
           </Link>
@@ -155,20 +155,20 @@ export default function AdminOrderDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-6">
-          <Link href="/admin/orders" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4">
+          <Link href="/admin/orders" className="inline-flex items-center text-slate-600 hover:text-slate-900 mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Orders
           </Link>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-slate-900">
                 Order #{order.order_number || order.id.slice(0, 8)}
               </h1>
-              <p className="text-gray-600">Placed on {formatDate(order.created_at)}</p>
+              <p className="text-slate-600">Placed on {formatDate(order.created_at)}</p>
             </div>
             <div className="flex gap-2">
               <Badge className={`${getOrderStatusColor(order.status)} text-sm px-3 py-1`}>
@@ -195,15 +195,15 @@ export default function AdminOrderDetailPage({ params }: PageProps) {
               <CardContent>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-gray-500">Name</p>
+                    <p className="text-sm text-slate-500">Name</p>
                     <p className="font-medium">{order.profiles?.full_name || 'N/A'}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Email</p>
+                    <p className="text-sm text-slate-500">Email</p>
                     <p className="font-medium">{order.profiles?.email}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Phone</p>
+                    <p className="text-sm text-slate-500">Phone</p>
                     <p className="font-medium">{order.profiles?.phone || 'N/A'}</p>
                   </div>
                 </div>
@@ -223,19 +223,19 @@ export default function AdminOrderDetailPage({ params }: PageProps) {
                   <div className="p-4 bg-green-50 rounded-lg">
                     <p className="text-sm font-medium text-green-800 mb-2">Pickup Address</p>
                     <p className="font-medium">{order.pickup_address?.label}</p>
-                    <p className="text-sm text-gray-600">{order.pickup_address?.address_line1}</p>
-                    <p className="text-sm text-gray-600">{order.pickup_address?.area}, {order.pickup_address?.city}</p>
-                    <p className="text-sm text-gray-500 mt-2">
+                    <p className="text-sm text-slate-600">{order.pickup_address?.address_line1}</p>
+                    <p className="text-sm text-slate-600">{order.pickup_address?.area}, {order.pickup_address?.city}</p>
+                    <p className="text-sm text-slate-500 mt-2">
                       <Calendar className="inline h-3 w-3 mr-1" />
                       {formatDate(order.preferred_pickup_time)}
                     </p>
                   </div>
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <p className="text-sm font-medium text-blue-800 mb-2">Delivery Address</p>
+                  <div className="p-4 bg-sky-50 rounded-lg">
+                    <p className="text-sm font-medium text-sky-800 mb-2">Delivery Address</p>
                     <p className="font-medium">{order.delivery_address?.label}</p>
-                    <p className="text-sm text-gray-600">{order.delivery_address?.address_line1}</p>
-                    <p className="text-sm text-gray-600">{order.delivery_address?.area}, {order.delivery_address?.city}</p>
-                    <p className="text-sm text-gray-500 mt-2">
+                    <p className="text-sm text-slate-600">{order.delivery_address?.address_line1}</p>
+                    <p className="text-sm text-slate-600">{order.delivery_address?.area}, {order.delivery_address?.city}</p>
+                    <p className="text-sm text-slate-500 mt-2">
                       <Calendar className="inline h-3 w-3 mr-1" />
                       {formatDate(order.preferred_delivery_time)}
                     </p>
@@ -254,11 +254,11 @@ export default function AdminOrderDetailPage({ params }: PageProps) {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b text-left">
-                        <th className="py-2 px-2 text-sm font-medium text-gray-500">Service</th>
-                        <th className="py-2 px-2 text-sm font-medium text-gray-500">Qty</th>
-                        <th className="py-2 px-2 text-sm font-medium text-gray-500">Weight</th>
-                        <th className="py-2 px-2 text-sm font-medium text-gray-500">Unit Price</th>
-                        <th className="py-2 px-2 text-sm font-medium text-gray-500 text-right">Total</th>
+                        <th className="py-2 px-2 text-sm font-medium text-slate-500">Service</th>
+                        <th className="py-2 px-2 text-sm font-medium text-slate-500">Qty</th>
+                        <th className="py-2 px-2 text-sm font-medium text-slate-500">Weight</th>
+                        <th className="py-2 px-2 text-sm font-medium text-slate-500">Unit Price</th>
+                        <th className="py-2 px-2 text-sm font-medium text-slate-500 text-right">Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -274,11 +274,11 @@ export default function AdminOrderDetailPage({ params }: PageProps) {
                     </tbody>
                     <tfoot>
                       <tr className="border-t">
-                        <td colSpan={4} className="py-2 px-2 text-right text-gray-600">Subtotal</td>
+                        <td colSpan={4} className="py-2 px-2 text-right text-slate-600">Subtotal</td>
                         <td className="py-2 px-2 text-right font-medium">{formatPrice(order.subtotal)}</td>
                       </tr>
                       <tr>
-                        <td colSpan={4} className="py-2 px-2 text-right text-gray-600">Delivery Fee</td>
+                        <td colSpan={4} className="py-2 px-2 text-right text-slate-600">Delivery Fee</td>
                         <td className="py-2 px-2 text-right font-medium">{formatPrice(order.delivery_fee)}</td>
                       </tr>
                       {order.discount_amount > 0 && (
@@ -315,29 +315,29 @@ export default function AdminOrderDetailPage({ params }: PageProps) {
                     {tracking.map((item, index) => (
                       <div key={item.id} className="flex gap-4">
                         <div className="flex flex-col items-center">
-                          <div className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-gray-300'}`} />
+                          <div className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-sky-500' : 'bg-slate-300'}`} />
                           {index < tracking.length - 1 && (
-                            <div className="w-0.5 h-full bg-gray-200 mt-1" />
+                            <div className="w-0.5 h-full bg-slate-200 mt-1" />
                           )}
                         </div>
                         <div className="pb-4 flex-1">
                           <div className="flex items-center justify-between">
-                            <p className="font-medium text-gray-900 capitalize">
+                            <p className="font-medium text-slate-900 capitalize">
                               {item.status.replace('_', ' ')}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-slate-500">
                               {formatDate(item.created_at)}
                             </p>
                           </div>
                           {item.notes && (
-                            <p className="text-sm text-gray-600 mt-1">{item.notes}</p>
+                            <p className="text-sm text-slate-600 mt-1">{item.notes}</p>
                           )}
                         </div>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-gray-500 text-center py-4">No tracking history</p>
+                  <p className="text-slate-500 text-center py-4">No tracking history</p>
                 )}
               </CardContent>
             </Card>

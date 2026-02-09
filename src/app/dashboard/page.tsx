@@ -47,15 +47,15 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-2xl font-bold text-slate-900">
               Welcome back, {profile?.full_name?.split(' ')[0] || 'there'}!
             </h1>
-            <p className="text-gray-600">Here&apos;s an overview of your laundry activity</p>
+            <p className="text-slate-600">Here&apos;s an overview of your laundry activity</p>
           </div>
           <Link href="/booking">
             <Button size="lg">
@@ -70,12 +70,12 @@ export default async function DashboardPage() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
-                  <Package className="h-6 w-6 text-blue-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50">
+                  <Package className="h-6 w-6 text-sky-500" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Total Orders</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.totalOrders}</p>
+                  <p className="text-sm text-slate-600">Total Orders</p>
+                  <p className="text-2xl font-bold text-slate-900">{stats.totalOrders}</p>
                 </div>
               </div>
             </CardContent>
@@ -88,8 +88,8 @@ export default async function DashboardPage() {
                   <Clock className="h-6 w-6 text-yellow-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">In Progress</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.pendingOrders}</p>
+                  <p className="text-sm text-slate-600">In Progress</p>
+                  <p className="text-2xl font-bold text-slate-900">{stats.pendingOrders}</p>
                 </div>
               </div>
             </CardContent>
@@ -98,12 +98,12 @@ export default async function DashboardPage() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100">
-                  <Package className="h-6 w-6 text-green-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
+                  <Package className="h-6 w-6 text-emerald-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Completed</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.completedOrders}</p>
+                  <p className="text-sm text-slate-600">Completed</p>
+                  <p className="text-2xl font-bold text-slate-900">{stats.completedOrders}</p>
                 </div>
               </div>
             </CardContent>
@@ -116,8 +116,8 @@ export default async function DashboardPage() {
                   <MapPin className="h-6 w-6 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Saved Addresses</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.addresses}</p>
+                  <p className="text-sm text-slate-600">Saved Addresses</p>
+                  <p className="text-2xl font-bold text-slate-900">{stats.addresses}</p>
                 </div>
               </div>
             </CardContent>
@@ -134,53 +134,53 @@ export default async function DashboardPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <Link href="/booking" className="block">
-                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-slate-50 transition-colors">
                     <div className="flex items-center gap-3">
-                      <Package className="h-5 w-5 text-blue-600" />
+                      <Package className="h-5 w-5 text-sky-500" />
                       <span>Book a Pickup</span>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-gray-400" />
+                    <ArrowRight className="h-4 w-4 text-slate-400" />
                   </div>
                 </Link>
                 <Link href="/dashboard/orders" className="block">
-                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-slate-50 transition-colors">
                     <div className="flex items-center gap-3">
                       <Clock className="h-5 w-5 text-yellow-600" />
                       <span>Track Orders</span>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-gray-400" />
+                    <ArrowRight className="h-4 w-4 text-slate-400" />
                   </div>
                 </Link>
                 <Link href="/dashboard/addresses" className="block">
-                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-slate-50 transition-colors">
                     <div className="flex items-center gap-3">
                       <MapPin className="h-5 w-5 text-purple-600" />
                       <span>Manage Addresses</span>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-gray-400" />
+                    <ArrowRight className="h-4 w-4 text-slate-400" />
                   </div>
                 </Link>
                 <Link href="/dashboard/profile" className="block">
-                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center justify-between p-3 rounded-lg border hover:bg-slate-50 transition-colors">
                     <div className="flex items-center gap-3">
-                      <User className="h-5 w-5 text-green-600" />
+                      <User className="h-5 w-5 text-emerald-600" />
                       <span>Edit Profile</span>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-gray-400" />
+                    <ArrowRight className="h-4 w-4 text-slate-400" />
                   </div>
                 </Link>
               </CardContent>
             </Card>
 
             {/* Promo Card */}
-            <Card className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+            <Card className="bg-gradient-to-r from-sky-500 to-blue-800 text-white">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold">20% OFF</h3>
-                <p className="mt-1 text-blue-100 text-sm">
+                <p className="mt-1 text-sky-50 text-sm">
                   Use code WELCOME20 on your next order
                 </p>
                 <Link href="/booking" className="mt-4 inline-block">
-                  <Button size="sm" className="bg-white text-blue-600 hover:bg-blue-50">
+                  <Button size="sm" className="bg-white text-sky-500 hover:bg-sky-50">
                     Book Now
                   </Button>
                 </Link>
@@ -193,7 +193,7 @@ export default async function DashboardPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle>Recent Orders</CardTitle>
-                <Link href="/dashboard/orders" className="text-sm text-blue-600 hover:underline">
+                <Link href="/dashboard/orders" className="text-sm text-sky-500 hover:underline">
                   View All
                 </Link>
               </CardHeader>
@@ -206,16 +206,16 @@ export default async function DashboardPage() {
                         href={`/dashboard/orders/${order.id}`}
                         className="block"
                       >
-                        <div className="flex items-center justify-between p-4 rounded-lg border hover:bg-gray-50 transition-colors">
+                        <div className="flex items-center justify-between p-4 rounded-lg border hover:bg-slate-50 transition-colors">
                           <div className="flex items-center gap-4">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
-                              <Package className="h-5 w-5 text-gray-600" />
+                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100">
+                              <Package className="h-5 w-5 text-slate-600" />
                             </div>
                             <div>
-                              <p className="font-medium text-gray-900">
+                              <p className="font-medium text-slate-900">
                                 Order #{order.order_number || order.id.slice(0, 8)}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-slate-500">
                                 {formatDate(order.created_at)}
                               </p>
                             </div>
@@ -224,7 +224,7 @@ export default async function DashboardPage() {
                             <Badge className={getOrderStatusColor(order.status)}>
                               {order.status.replace('_', ' ')}
                             </Badge>
-                            <p className="mt-1 text-sm font-medium text-gray-900">
+                            <p className="mt-1 text-sm font-medium text-slate-900">
                               {formatPrice(order.total_amount)}
                             </p>
                           </div>
@@ -234,8 +234,8 @@ export default async function DashboardPage() {
                   </div>
                 ) : (
                   <div className="text-center py-12">
-                    <Package className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-600">No orders yet</p>
+                    <Package className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+                    <p className="text-slate-600">No orders yet</p>
                     <Link href="/booking" className="mt-4 inline-block">
                       <Button>Book Your First Pickup</Button>
                     </Link>

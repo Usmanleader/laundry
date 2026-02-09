@@ -88,26 +88,26 @@ export default function ProfilePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
-        <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full" />
+      <div className="min-h-screen bg-slate-50 py-8 flex items-center justify-center">
+        <div className="animate-spin h-8 w-8 border-2 border-sky-500 border-t-transparent rounded-full" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-slate-50 py-8">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">Profile Settings</h1>
-          <p className="text-gray-600">Manage your account information</p>
+          <h1 className="text-2xl font-bold text-slate-900">Profile Settings</h1>
+          <p className="text-slate-600">Manage your account information</p>
         </div>
 
         {/* Profile Card */}
         <Card className="mb-6">
           <CardHeader>
             <div className="flex items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-white text-2xl font-bold">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-sky-500 text-white text-2xl font-bold">
                 {profile?.full_name?.charAt(0) || email.charAt(0).toUpperCase()}
               </div>
               <div>
@@ -132,7 +132,7 @@ export default function ProfilePage() {
                   error={errors.fullName?.message}
                   {...register('fullName')}
                 />
-                <User className="absolute right-3 top-8 h-5 w-5 text-gray-400" />
+                <User className="absolute right-3 top-8 h-5 w-5 text-slate-400" />
               </div>
               
               <div className="relative">
@@ -141,9 +141,9 @@ export default function ProfilePage() {
                   type="email"
                   value={email}
                   disabled
-                  className="bg-gray-50"
+                  className="bg-slate-50"
                 />
-                <Mail className="absolute right-3 top-8 h-5 w-5 text-gray-400" />
+                <Mail className="absolute right-3 top-8 h-5 w-5 text-slate-400" />
               </div>
               
               <div className="relative">
@@ -153,7 +153,7 @@ export default function ProfilePage() {
                   error={errors.phone?.message}
                   {...register('phone')}
                 />
-                <Phone className="absolute right-3 top-8 h-5 w-5 text-gray-400" />
+                <Phone className="absolute right-3 top-8 h-5 w-5 text-slate-400" />
               </div>
               
               <div className="grid sm:grid-cols-2 gap-4">
@@ -163,7 +163,7 @@ export default function ProfilePage() {
                     type="date"
                     {...register('dateOfBirth')}
                   />
-                  <Calendar className="absolute right-3 top-8 h-5 w-5 text-gray-400" />
+                  <Calendar className="absolute right-3 top-8 h-5 w-5 text-slate-400" />
                 </div>
                 
                 <Select
@@ -198,7 +198,7 @@ export default function ProfilePage() {
             <Button variant="destructive" disabled>
               Delete Account
             </Button>
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-sm text-slate-500 mt-2">
               Contact support to delete your account.
             </p>
           </CardContent>
