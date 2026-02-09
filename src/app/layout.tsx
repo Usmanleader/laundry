@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Navbar, Footer } from '@/components/layout'
 import { ToastContainer } from '@/components/ui/toast'
+import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { CartProvider } from '@/context/CartContext'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -49,6 +50,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <WhatsAppButton />
           <ToastContainer />
         </CartProvider>
       </body>
