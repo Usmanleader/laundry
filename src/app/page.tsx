@@ -334,7 +334,7 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <a href="tel:+923001234567">
+            <a href="https://wa.me/923362793950" target="_blank" rel="noopener noreferrer">
               <Button size="xl" variant="outline" className="w-full sm:w-auto border-white/60 text-white hover:bg-white/10">
                 <Phone className="mr-2 h-5 w-5" />
                 Call Us

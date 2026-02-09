@@ -67,8 +67,8 @@ export default function BookingConfirmationPage() {
           <div className="mt-6 pt-6 border-t border-slate-100">
             <p className="text-sm text-slate-400">
               Need help? Call us at{' '}
-              <a href="tel:+923001234567" className="text-sky-600 font-medium hover:underline">
-                +92 300 123 4567
+              <a href="https://wa.me/923362793950" target="_blank" rel="noopener noreferrer" className="text-sky-600 font-medium hover:underline">
+                +92 336 279 3950
               </a>
             </p>
           </div>

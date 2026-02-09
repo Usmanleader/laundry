@@ -2,6 +2,9 @@
 
 **Last Updated:** February 9, 2026  
 **Project Path:** `E:\Laundry\washerman-karachi`  
+**GitHub:** https://github.com/Usmanleader/laundry  
+**Live URL:** https://washerman-karachi.vercel.app  
+**WhatsApp:** +92 336 279 3950  
 **Status:** Production-Ready | Build Passing (29 routes)
 
 ---
@@ -79,6 +82,15 @@ ENV VARS (.env.local):
 - SUPABASE_SERVICE_ROLE_KEY=(needed for guest orders to bypass RLS)
 - NEXT_PUBLIC_APP_URL=http://localhost:3000
 - NEXT_PUBLIC_DELIVERY_FEE=150
+
+CONTACT INFO:
+- WhatsApp: +92 336 279 3950 (all contact links use wa.me/923362793950)
+- All tel: links have been replaced with WhatsApp links across the app
+
+DEPLOYMENT:
+- GitHub: https://github.com/Usmanleader/laundry
+- Vercel: https://washerman-karachi.vercel.app
+- Auto-deploys on push to main branch
 
 IMPORTANT NOTES:
 - Build passes with 0 errors (npm run build)

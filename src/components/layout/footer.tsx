@@ -56,9 +56,9 @@ export function Footer() {
             
             {/* Contact Info */}
             <div className="mt-6 space-y-3">
-              <a href="tel:+923001234567" className="flex items-center gap-2 text-sm hover:text-white">
+              <a href="https://wa.me/923362793950" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-white">
                 <Phone className="h-4 w-4" />
-                +92 300 123 4567
+                +92 336 279 3950
               </a>
               <a href="mailto:hello@washerman.pk" className="flex items-center gap-2 text-sm hover:text-white">
                 <Mail className="h-4 w-4" />

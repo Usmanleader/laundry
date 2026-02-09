@@ -17,8 +17,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Phone',
-    details: ['+92 300 123 4567', '+92 21 1234 5678'],
-    action: 'tel:+923001234567',
+    details: ['+92 336 279 3950'],
+    action: 'https://wa.me/923362793950',
   },
   {
     icon: Mail,
@@ -200,7 +200,7 @@ export default function ContactPage() {
             Chat with us directly for quick responses
           </p>
           <a
-            href="https://wa.me/923001234567"
+            href="https://wa.me/923362793950"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white text-green-600 rounded-lg font-semibold hover:bg-green-50 transition-colors"
